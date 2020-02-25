@@ -27,10 +27,14 @@
 
   export default {
     name: 'Home',
+    methods: {
+
+    },
     components: {
       Search,
       Movies,
       ActiveMovie,
     }
+
   }
 </script>

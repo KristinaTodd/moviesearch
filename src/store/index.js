@@ -17,20 +17,19 @@ export default new Vuex.Store({
   mutations: {
     setActiveMovie(state, movie) {
       state.activeMovie = movie;
+    },
+
+    setMovies(state, movie) {
+      state.movies = movie
     }
+
   },
   actions: {
-    getMoviesByQuery() {
-      let url = "https://api.themoviedb.org/3/search/movie?api_key=b657e0918cc5f0f622c8d02539206b0a&query=" + query;
 
-      $.getJSON(url)
-        .then(res => {
-          let results = res.results
-            .map(rawData => new Movies(rawData))
-          commit("movies", results)
-        }).catch(err => {
-          throw new Error(err);
-        });
+    async getMoviesByQuery({ commit, dispatch }, query) {
+      let res = await _api.get("movie?api_key=b657e0918cc5f0f622c8d02539206b0a&query=" + query)
+      commit("setMovies", res)
+      console.log(res)
     }
   },
   modules: {
