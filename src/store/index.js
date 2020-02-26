@@ -19,8 +19,8 @@ export default new Vuex.Store({
       state.activeMovie = movie;
     },
 
-    setMovies(state, movie) {
-      state.movies = movie
+    setMovies(state, movies) {
+      state.movies = movies
     }
 
   },
@@ -28,8 +28,12 @@ export default new Vuex.Store({
 
     async getMoviesByQuery({ commit, dispatch }, query) {
       let res = await _api.get("movie?api_key=b657e0918cc5f0f622c8d02539206b0a&query=" + query)
-      commit("setMovies", res)
+      commit("setMovies", res.data.results)
       console.log(res)
+    },
+
+    setActiveMovie({ commit }, movie) {
+      commit("setActiveMovie", movie);
     }
   },
   modules: {

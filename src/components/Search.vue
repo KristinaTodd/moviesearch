@@ -21,7 +21,6 @@
     },
     methods: {
       searchMovies() {
-        debugger
         this.$store.dispatch("getMoviesByQuery", this.searchTitle)
       }
     }
