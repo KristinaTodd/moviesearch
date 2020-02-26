@@ -1,5 +1,6 @@
 <template>
-  <div class="col bg-info ">
+
+  <div class="col-12 bg-info ">
     <form @submit.prevent="searchMovies" class="form-inline justify-content-center">
       <div class="form-group ">
         <label for="query"></label>
@@ -9,6 +10,7 @@
       </div>
     </form>
   </div>
+
 </template>
 
 <script>
